@@ -5,16 +5,15 @@ import { RollupOutput } from 'rollup'
 import { join } from 'node:path'
 import fs from 'fs-extra'
 import { SiteConfig } from 'shared/types'
-import { pluginConfig } from './plugin-ccland/config'
-import { pluginRoutes } from './plugin-routes'
+
 import { pathToFileURL } from 'node:url'
 import { createVitePlugins } from './vitePlugins'
 
 export async function bundle(root: string, config: SiteConfig) {
-  const resolveViteConfig = (isServer: boolean): InlineConfig => ({
+  const resolveViteConfig = async (isServer: boolean): Promise<InlineConfig> => ({
     mode: 'production',
     root,
-    plugins: createVitePlugins(config),
+    plugins: await createVitePlugins(config),
     ssr: {
       noExternal: ['vue-router'],
     },
@@ -35,9 +34,9 @@ export async function bundle(root: string, config: SiteConfig) {
   try {
     const [clientBundle, serverBundle] = await Promise.all([
       // client build
-      viteBuild(resolveViteConfig(false)),
+      viteBuild(await resolveViteConfig(false)),
       // server build
-      viteBuild(resolveViteConfig(true)),
+      viteBuild(await resolveViteConfig(true)),
     ])
     return [clientBundle, serverBundle] as [RollupOutput, RollupOutput]
   } catch (e) {

@@ -1,11 +1,18 @@
 <template>
   <div>
-    <h1>Common Content</h1>
+    <h1
+      p="2"
+      m="4"
+    >
+      Common Content
+    </h1>
     <h1>Doc Content</h1>
     <router-view></router-view>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import 'uno.css'
+</script>
 
 <style scoped></style>

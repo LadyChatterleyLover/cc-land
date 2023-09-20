@@ -1,7 +1,35 @@
-# hello world
+---
+title: 'custom title'
+---
 
-# GFM 
+# GFM
 
-## Autolink 
+## Autolink literals
 
-literals www.example.com, https://example.com, and contact@example.com.
+www.example.com, https://example.com, and contact@example.com.
+
+## Footnote
+
+A note[^1]
+
+[^1]: Big note.
+
+## Strikethrough
+
+~one~ or ~~two~~ tildes.
+
+
+
+## Tasklist
+
+- [ ] to do
+- [x] done
+
+```ts
+import { Plugin } from 'vite';
+import { pluginMdxRollup } from './pluginMdxRollup';
+
+export async function pluginMdx(): Promise<Plugin[]> {
+  return [await pluginMdxRollup()];
+}
+```

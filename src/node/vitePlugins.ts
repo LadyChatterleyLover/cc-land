@@ -6,8 +6,10 @@ import { pluginConfig } from './plugin-ccland/config'
 import { pluginRoutes } from './plugin-routes'
 import { SiteConfig } from 'shared/types'
 import { createPluginMdx } from './plugin-mdx'
+import pluginUnocss from 'unocss/vite'
+import unocssOptions from './unocssOptions'
 
-export function createVitePlugins(config: SiteConfig, restartServer?: () => Promise<void>) {
+export async function createVitePlugins(config: SiteConfig, restartServer?: () => Promise<void>) {
   return [
     pluginIndexHtml(),
     pluginVue(),
@@ -16,7 +18,8 @@ export function createVitePlugins(config: SiteConfig, restartServer?: () => Prom
     pluginRoutes({
       root: config.root,
     }),
-    createPluginMdx(),
+    pluginUnocss(unocssOptions),
+    await createPluginMdx(),
     babel({
       extensions: ['.js', '.jsx', '.cjs', '.mjs', '.md', '.mdx'],
       plugins: ['@vue/babel-plugin-jsx'],
