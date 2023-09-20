@@ -60,7 +60,7 @@ const handleClick = () => {
 }
 
 .dark .check {
-  background-color: var(--island-c-black);
+  background-color: var(--island-c-bg-mute);
   transform: translateX(18px);
 }
 
