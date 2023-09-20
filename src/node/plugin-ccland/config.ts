@@ -20,7 +20,8 @@ export function pluginConfig(config: SiteConfig, restartServer?: () => Promise<v
     },
     async handleHotUpdate(ctx) {
       const customWatchedFiles = [config.configPath]
-      const include = (id: string) => customWatchedFiles.some(file => id.includes(normalizePath(file)))
+      const include = (id: string) =>
+        customWatchedFiles.some(file => id.includes(normalizePath(file)))
       if (include(ctx.file)) {
         console.log(`\n${relative(config.root, ctx.file)} changed, restarting server...`)
         // 重启 Dev Server
@@ -33,6 +34,11 @@ export function pluginConfig(config: SiteConfig, restartServer?: () => Promise<v
         resolve: {
           alias: {
             '@runtime': join(PACKAGE_ROOT, 'src', 'runtime', 'index.ts'),
+          },
+        },
+        css: {
+          modules: {
+            localsConvention: 'camelCaseOnly',
           },
         },
       }

@@ -1,21 +1,22 @@
 <template>
   <div>
-    <h1
-      p="2"
-      m="4"
-    >
-      Common Content
-    </h1>
-    <h1>Doc Content</h1>
+    <nav-bar></nav-bar>
+    <br />
+    <br />
+    <br />
     <router-view></router-view>
   </div>
 </template>
 
 <script setup lang="ts">
 import 'uno.css'
+import '../styles/base.css'
+import '../styles/vars.css'
 import { inject } from 'vue'
+import { pageDataContextKey } from '../../runtime/constants'
+import NavBar from '../components/nav/Nav.vue'
 
-const pageData = inject('pageData', undefined)
+const pageData = inject(pageDataContextKey, undefined)
 </script>
 
 <style scoped></style>

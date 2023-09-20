@@ -4,6 +4,7 @@ import siteData from 'island:site-data'
 import { routes } from 'island:routes'
 import { createRouter } from './router'
 import { PageModule } from 'shared/types'
+import { pageDataContextKey } from './constants'
 
 async function initPageData(routePath: string) {
   const route = routes.find(item => item.path === routePath)
@@ -34,7 +35,7 @@ async function renderInBrowser() {
   const pageData = await initPageData(location.pathname)
   const app = createApp(App)
   const router = createRouter()
-  app.provide('pageData', pageData)
+  app.provide(pageDataContextKey, pageData)
   app.use(router)
   app.mount(containerEl)
 }
