@@ -13,6 +13,9 @@
 
 <script setup lang="ts">
 import 'uno.css'
+import { inject } from 'vue'
+
+const pageData = inject('pageData', undefined)
 </script>
 
 <style scoped></style>

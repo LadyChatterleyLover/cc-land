@@ -40,7 +40,7 @@ export class RouteService {
   export const routes = [
   ${this.#routeData
     .map(route => {
-      return `{ path: '${route.routePath}', component: () => import('${route.absolutePath}') }`
+      return `{ path: '${route.routePath}', component: () => import('${route.absolutePath}'),meta: {preload: () => import('${route.absolutePath}')} }`
     })
     .join(',\n')}
   ];
