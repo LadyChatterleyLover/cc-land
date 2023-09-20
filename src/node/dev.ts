@@ -5,18 +5,17 @@ import { resolveConfig } from './config'
 import { pluginConfig } from './plugin-ccland/config'
 import { PACKAGE_ROOT } from './constants'
 import { pluginRoutes } from './plugin-routes'
+import { createVitePlugins } from './vitePlugins'
 
 export async function createDevServer(root = process.cwd(), restart: () => Promise<void>) {
   const config = await resolveConfig(root, 'serve', 'development')
   return createViteServer({
     root: PACKAGE_ROOT,
-    plugins: [
-      vuePlugin(),
-      pluginIndexHtml(),
-      pluginConfig(config, restart),
-      pluginRoutes({
-        root: config.root,
-      }),
-    ],
+    plugins: createVitePlugins(config, restart),
+    server: {
+      fs: {
+        allow: [PACKAGE_ROOT],
+      },
+    },
   })
 }

@@ -8,12 +8,13 @@ import { SiteConfig } from 'shared/types'
 import { pluginConfig } from './plugin-ccland/config'
 import { pluginRoutes } from './plugin-routes'
 import { pathToFileURL } from 'node:url'
+import { createVitePlugins } from './vitePlugins'
 
 export async function bundle(root: string, config: SiteConfig) {
   const resolveViteConfig = (isServer: boolean): InlineConfig => ({
     mode: 'production',
     root,
-    plugins: [pluginConfig(config), pluginRoutes({ root }), vuePlugin()],
+    plugins: createVitePlugins(config),
     ssr: {
       noExternal: ['vue-router'],
     },
