@@ -1,4 +1,4 @@
-import { throttle } from 'lodash-es'
+import { throttle } from 'lodash'
 
 let links: HTMLAnchorElement[] = []
 

@@ -2,6 +2,7 @@ import { cac } from 'cac'
 import { resolve } from 'node:path'
 import { build } from './build'
 import { resolveConfig } from './config'
+import { preview } from './preview'
 
 const version = require('../../package.json').version
 
@@ -33,5 +34,17 @@ cli.command('build [root]', 'build for production').action(async (root: string) 
     console.log(e)
   }
 })
+
+cli
+  .command('preview [root]', 'preview production build')
+  .option('--port <port>', 'port to use for preview server')
+  .action(async (root: string, { port }: { port: number }) => {
+    try {
+      root = resolve(root)
+      await preview(root, { port })
+    } catch (e) {
+      console.log(e)
+    }
+  })
 
 cli.parse()
