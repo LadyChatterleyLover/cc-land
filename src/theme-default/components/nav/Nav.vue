@@ -45,5 +45,6 @@ const nav = siteData.themeConfig.nav || []
 .nav {
   padding-left: max(32px, calc(32px + (100vw - var(--island-layout-max-width)) / 2));
   padding-right: max(32px, calc(32px + (100vw - var(--island-layout-max-width)) / 2));
+  background-color: var(--island-c-bg);
 }
 </style>
