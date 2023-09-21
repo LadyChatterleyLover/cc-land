@@ -9,7 +9,7 @@
     </div>
     <div relative="~" display="none lg:block" order="2" flex="1" p="l-8" class="max-w-256px">
       <div class="aside-container">
-        <aside-nav :headers="toc" />
+        <aside-nav :headers="toc" __island />
       </div>
     </div>
   </div>

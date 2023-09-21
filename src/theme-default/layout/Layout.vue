@@ -8,7 +8,6 @@
       <div v-else-if="pageType === 'doc'">
         <doc-layout></doc-layout>
       </div>
-      <div v-else>404页面</div>
     </div>
   </div>
 </template>
@@ -23,6 +22,7 @@ import { pageDataContextKey } from '../../runtime/constants'
 import NavBar from '../components/nav/Nav.vue'
 import HomeLayout from './HomeLayout.vue'
 import DocLayout from './DocLayout.vue'
+import NotFoundLayout from './NotFoundLayout.vue'
 
 const pageData = inject(pageDataContextKey, undefined)
 const { pageType } = pageData
