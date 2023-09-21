@@ -1,6 +1,5 @@
 import { InlineConfig, build as viteBuild, normalizePath } from 'vite'
 import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from './constants'
-import vuePlugin from '@vitejs/plugin-vue'
 import { RollupOutput } from 'rollup'
 import { join } from 'node:path'
 import fs from 'fs-extra'

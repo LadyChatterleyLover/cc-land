@@ -1,5 +1,5 @@
 <template>
-  <div>页面B</div>
+  <div>页面Guide --- B</div>
 </template>
 
 <script setup></script>
