@@ -1,42 +1,17 @@
 <template>
-  <header
-    fixed="~"
-    pos="t-0 l-0"
-    w="full"
-  >
-    <div
-      flex="~"
-      items="center"
-      justify="between"
-      class="px-8 h-14 divider-bottom"
-    >
+  <header fixed="~" pos="t-0 l-0" w="full" z="10">
+    <div flex="~" items="center" justify="between" class="nav h-14 divider-bottom">
       <div>
-        <a
-          href="/"
-          hover="opacity-60"
-          class="w-full h-full text-1rem font-semibold flex items-center"
-        >
-          Island.js
-        </a>
+        <a href="/" hover="opacity-60" class="w-full h-full text-1rem font-semibold flex items-center"> Island.js </a>
       </div>
       <div flex="~">
         <div flex="~">
-          <nav-item
-            v-for="item in nav"
-            :key="item.text"
-            :item="item"
-          ></nav-item>
+          <nav-item v-for="item in nav" :key="item.text" :item="item"></nav-item>
         </div>
-
-        <!-- 白天/夜间模式切换 
-         下一节课介绍  -->
         <div flex="~">
           <switch-appearance></switch-appearance>
         </div>
-        <div
-          class="{styles.socialLinkIcon}"
-          ml="2"
-        >
+        <div class="{styles.socialLinkIcon}" ml="2">
           <a href="/">
             <div class="i-carbon-logo-github w-5 h-5 fill-current"></div>
           </a>
@@ -66,5 +41,9 @@ const nav = siteData.themeConfig.nav || []
   &:hover {
     color: var(--island-c-text-1);
   }
+}
+.nav {
+  padding-left: max(32px, calc(32px + (100vw - var(--island-layout-max-width)) / 2));
+  padding-right: max(32px, calc(32px + (100vw - var(--island-layout-max-width)) / 2));
 }
 </style>

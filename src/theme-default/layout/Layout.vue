@@ -1,12 +1,17 @@
 <template>
   <div>
     <nav-bar></nav-bar>
-    <div v-if="pageType === 'home'">
-      <home-layout></home-layout>
+    <div m="auto" p="t-20 x-16 b-16">
+      <div v-if="pageType === 'home'">
+        <home-layout></home-layout>
+      </div>
+      <div v-else-if="pageType === 'doc'">
+        <doc-layout></doc-layout>
+      </div>
+      <div v-else>404页面</div>
+
+      <router-view></router-view>
     </div>
-    <div v-else-if="pageType === 'doc'">正文页面</div>
-    <div v-else>404页面</div>
-    <router-view></router-view>
   </div>
 </template>
 
@@ -18,9 +23,10 @@ import { inject } from 'vue'
 import { pageDataContextKey } from '../../runtime/constants'
 import NavBar from '../components/nav/Nav.vue'
 import HomeLayout from './HomeLayout.vue'
+import DocLayout from './DocLayout.vue'
 
 const pageData = inject(pageDataContextKey, undefined)
 const { pageType } = pageData
 </script>
 
-<style scoped></style>
+<style scoped lang="scss"></style>
