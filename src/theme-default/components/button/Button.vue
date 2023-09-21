@@ -1,11 +1,16 @@
 <template>
   <template v-if="type">
-    <component :is="type">
-      <slot></slot>
+    <Link class="button" :class="[theme, size]" v-if="type === 'link'">{{ text }}</Link>
+    <component :is="type" v-else class="button" :class="[theme, size]">
+      <slot>
+        {{ text }}
+      </slot>
     </component>
   </template>
-  <a v-else class="button theme size" :class="[className]">
-    <slot></slot>
+  <a v-else class="button" :class="[className, theme, size]">
+    <slot>
+      {{ text }}
+    </slot>
   </a>
 </template>
 

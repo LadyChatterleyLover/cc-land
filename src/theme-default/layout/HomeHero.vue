@@ -25,7 +25,7 @@
 import CcButton from '../components/button/Button.vue'
 import { Hero } from 'shared/types'
 
-const props = defineProps<{
+defineProps<{
   hero: Hero
 }>()
 </script>
