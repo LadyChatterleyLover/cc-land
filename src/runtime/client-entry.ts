@@ -7,7 +7,10 @@ import { PageModule } from 'shared/types'
 import { pageDataContextKey } from './constants'
 
 async function initPageData(routePath: string) {
-  const route = routes.find(item => item.path === routePath)
+  const route = routes.find(
+    item => item.path === (item.path[item.path.length - 1] === '/' ? routePath + '/' : routePath)
+  )
+
   if (route) {
     const preload = route.meta.preload as () => Promise<PageModule>
     const moduleInfo = await preload()
@@ -17,6 +20,7 @@ async function initPageData(routePath: string) {
       siteData,
       frontmatter: moduleInfo.frontmatter,
       pagePath: routePath,
+      toc: moduleInfo.toc,
     }
   }
   return {

@@ -2,7 +2,7 @@ import type { Plugin } from 'unified'
 import Slugger from 'github-slugger'
 import { visit } from 'unist-util-visit'
 import { Root } from 'hast'
-import type { MdxjsEsm, Program } from 'mdast-util-mdxjs-esm'
+import type { MdxjsEsm } from 'mdast-util-mdxjs-esm'
 import { parse } from 'acorn'
 
 const slugger = new Slugger()
@@ -22,7 +22,7 @@ interface ChildNode {
 export const remarkPluginToc: Plugin<[], Root> = () => {
   return tree => {
     const toc: TocItem[] = []
-    visit(tree, 'heading', node => {
+    visit(tree, 'heading', (node: any) => {
       if (!node.depth || !node.children) {
         return
       }
@@ -56,7 +56,7 @@ export const remarkPluginToc: Plugin<[], Root> = () => {
         estree: parse(insertCode, {
           ecmaVersion: 2020,
           sourceType: 'module',
-        }) as unknown as Program,
+        }) as unknown,
       },
     } as MdxjsEsm)
   }
