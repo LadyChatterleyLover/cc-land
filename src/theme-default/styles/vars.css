@@ -143,12 +143,15 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --island-font-family-base: 'Inter var experimental', 'Inter var', -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
+  --island-font-family-base: 'Inter var experimental', 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --island-font-family-mono: Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+:root {
+  --island-sidebar-width: 272px;
+  --island-aside-width: 268px;
+}
 /**
  * Layouts
  * -------------------------------------------------------------------------- */
@@ -328,11 +331,7 @@
 
 :root {
   --island-home-hero-name-color: transparent;
-  --island-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    var(--island-c-brand) 30%,
-    #41d1ff
-  );
+  --island-home-hero-name-background: -webkit-linear-gradient(120deg, var(--island-c-brand) 30%, #41d1ff);
 
   --island-home-hero-image-background-image: none;
   --island-home-hero-image-filter: none;

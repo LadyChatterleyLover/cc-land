@@ -1,4 +1,4 @@
-import { FrontMatter, UserConfig } from 'shared/types'
+import { FrontMatter, Header, UserConfig } from 'shared/types'
 import { InjectionKey } from 'vue'
 
 export interface PageDataContext {
@@ -6,6 +6,7 @@ export interface PageDataContext {
   siteData: UserConfig
   frontmatter: FrontMatter
   pagePath: string
+  toc: Header[]
 }
 
 export const pageDataContextKey: InjectionKey<PageDataContext> = Symbol('pageData')

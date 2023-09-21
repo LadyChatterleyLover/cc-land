@@ -26,6 +26,7 @@ async function initPageData(routePath: string) {
     siteData,
     pagePath: routePath,
     frontmatter: {},
+    toc: [],
   }
 }
 
