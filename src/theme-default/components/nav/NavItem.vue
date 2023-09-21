@@ -1,5 +1,5 @@
 <template>
-  <div class="text-sm font-medium mx-3">
+  <div class="text-sm font-medium mx-3" :class="[{ 'text-brand': item.link === $route.path }]">
     <a :href="item.link" class="link">
       {{ item.text }}
     </a>

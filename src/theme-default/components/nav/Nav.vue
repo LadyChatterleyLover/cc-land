@@ -8,10 +8,10 @@
         <div flex="~">
           <nav-item v-for="item in nav" :key="item.text" :item="item"></nav-item>
         </div>
-        <div flex="~">
+        <div flex="~" class="switch-appearance">
           <switch-appearance></switch-appearance>
         </div>
-        <div class="{styles.socialLinkIcon}" ml="2">
+        <div class="social-link-icon" before="menu-item-before">
           <a href="/">
             <div class="i-carbon-logo-github w-5 h-5 fill-current"></div>
           </a>
@@ -40,6 +40,17 @@ const nav = siteData.themeConfig.nav || []
   color: var(--island-c-text-2);
   &:hover {
     color: var(--island-c-text-1);
+  }
+}
+.social-link-icon,
+.switch-appearance {
+  &::before {
+    margin-right: 12px;
+    margin-left: 12px;
+    width: 1px;
+    height: 24px;
+    background-color: var(--island-c-divider-light);
+    content: ' ';
   }
 }
 .nav {
