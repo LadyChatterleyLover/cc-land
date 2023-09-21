@@ -1,9 +1,6 @@
 <template>
   <div class="text-sm font-medium mx-3">
-    <a
-      :href="item.link"
-      class="link"
-    >
+    <a :href="item.link" class="link">
       {{ item.text }}
     </a>
   </div>
@@ -11,6 +8,7 @@
 
 <script lang="ts" setup>
 import { NavItemWithLink } from '../../../shared/types'
+
 defineProps<{
   item: NavItemWithLink
 }>()

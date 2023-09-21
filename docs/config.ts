@@ -8,7 +8,7 @@ export default defineConfig({
       { text: '指南', link: '/guide/' },
     ],
     sidebar: {
-      '/guide/': [
+      '/guide': [
         {
           text: '教程',
           items: [

@@ -1,5 +1,5 @@
 <template>
-  <side-bar :sidebarData="matchedSidebar" :pathname="path" />
+  <side-bar :sidebarData="matchedSidebar" :pathname="$route.path" />
   <div class="content">
     <div>
       <div class="island-doc">
