@@ -12,7 +12,6 @@ async function initPageData(routePath: string) {
   if (route) {
     const preload = route.meta.preload as () => Promise<PageModule>
     const moduleInfo = await preload()
-    console.log(moduleInfo)
     return {
       pageType: moduleInfo.frontmatter?.pageType ?? 'doc',
       siteData,
