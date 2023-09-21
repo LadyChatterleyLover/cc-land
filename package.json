@@ -46,6 +46,7 @@
     "remark-gfm": "^4.0.0",
     "remark-mdx-frontmatter": "^3.0.0",
     "shiki": "^0.14.4",
+    "sirv": "^2.0.3",
     "unified": "^11.0.3",
     "uninstall": "^0.0.0",
     "unocss": "^0.56.0",

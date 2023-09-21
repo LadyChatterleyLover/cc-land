@@ -1,4 +1,5 @@
 import { Plugin, normalizePath } from 'vite'
+import sirv from 'sirv'
 import { SiteConfig } from '../../shared/types/index'
 import { join, relative } from 'node:path'
 import { PACKAGE_ROOT } from '../constants'
@@ -8,6 +9,10 @@ const SITE_DATA_ID = 'island:site-data'
 export function pluginConfig(config: SiteConfig, restartServer?: () => Promise<void>): Plugin {
   return {
     name: 'island:config',
+    configureServer(server) {
+      const publicDir = join(config.root, 'public')
+      server.middlewares.use(sirv(publicDir))
+    },
     resolveId(id) {
       if (id === SITE_DATA_ID) {
         return '\0' + SITE_DATA_ID
@@ -20,8 +25,7 @@ export function pluginConfig(config: SiteConfig, restartServer?: () => Promise<v
     },
     async handleHotUpdate(ctx) {
       const customWatchedFiles = [config.configPath]
-      const include = (id: string) =>
-        customWatchedFiles.some(file => id.includes(normalizePath(file)))
+      const include = (id: string) => customWatchedFiles.some(file => id.includes(normalizePath(file)))
       if (include(ctx.file)) {
         console.log(`\n${relative(config.root, ctx.file)} changed, restarting server...`)
         // 重启 Dev Server
