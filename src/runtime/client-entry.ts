@@ -13,7 +13,7 @@ async function initPageData(routePath: string) {
     const moduleInfo = await preload()
     console.log(moduleInfo)
     return {
-      pageType: 'doc',
+      pageType: moduleInfo.frontmatter?.pageType ?? 'doc',
       siteData,
       frontmatter: moduleInfo.frontmatter,
       pagePath: routePath,

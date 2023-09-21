@@ -1,0 +1,108 @@
+<template>
+  <template v-if="type">
+    <component :is="type">
+      <slot></slot>
+    </component>
+  </template>
+  <a v-else class="button theme size" :class="[className]">
+    <slot></slot>
+  </a>
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import Link from '../link/Link.vue'
+
+export interface ButtonProps {
+  type?: string
+  size?: 'medium' | 'big'
+  theme?: 'brand' | 'alt'
+  text: string
+  href?: string
+  external?: boolean
+  className?: string
+}
+
+const props = withDefaults(defineProps<ButtonProps>(), {
+  theme: 'brand',
+  size: 'big',
+  href: '/',
+  external: false,
+  className: '',
+})
+
+const type = computed(() => {
+  if (props.type === 'button') {
+    return 'button'
+  } else if (props.type === 'a') {
+    return props.external ? 'a' : 'link'
+  }
+  return ''
+})
+</script>
+
+<style scoped lang="scss">
+.button {
+  display: inline-block;
+  border: 1px solid transparent;
+  text-align: center;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+}
+
+.button:active {
+  transition: color 0.1s, border-color 0.1s, background-color 0.1s;
+}
+
+.button.medium {
+  border-radius: 20px;
+  padding: 0 20px;
+  line-height: 38px;
+  font-size: 14px;
+}
+
+.button.big {
+  border-radius: 24px;
+  padding: 0 24px;
+  line-height: 46px;
+  font-size: 16px;
+}
+
+.button.brand {
+  border-color: var(--island-button-brand-border);
+  color: var(--island-button-brand-text);
+  background-color: var(--island-button-brand-bg);
+}
+
+.button.brand:hover {
+  opacity: 1;
+  border-color: var(--island-button-brand-hover-border);
+  color: var(--island-button-brand-hover-text);
+  background-color: var(--island-button-brand-hover-bg);
+}
+
+.button.brand:active {
+  border-color: var(--island-button-brand-active-border);
+  color: var(--island-button-brand-active-text);
+  background-color: var(--island-button-brand-active-bg);
+}
+
+.button.alt {
+  border-color: var(--island-button-alt-border);
+  color: var(--island-button-alt-text);
+  background-color: var(--island-button-alt-bg);
+}
+
+.button.alt:hover {
+  border-color: var(--island-button-alt-hover-border);
+  color: var(--island-button-alt-hover-text);
+  background-color: var(--island-button-alt-hover-bg);
+}
+
+.button.alt:active {
+  border-color: var(--island-button-alt-active-border);
+  color: var(--island-button-alt-active-text);
+  background-color: var(--island-button-alt-active-bg);
+}
+</style>

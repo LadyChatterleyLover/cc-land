@@ -20,8 +20,6 @@ export async function pluginMdxRollup() {
     ],
     rehypePlugins: [
       rehypePluginSlug,
-      rehypePluginPreWrapper as any,
-      [rehypePluginShiki, { highlighter: await shiki.getHighlighter({ theme: 'nord' }) }],
       [
         rehypePluginAutolinkHeadings,
         {
@@ -34,6 +32,8 @@ export async function pluginMdxRollup() {
           },
         },
       ],
+      rehypePluginPreWrapper as any,
+      [rehypePluginShiki, { highlighter: await shiki.getHighlighter({ theme: 'nord' }) }],
     ],
   })
 }

@@ -5,7 +5,6 @@ import type { Element, Root } from 'hast'
 export const rehypePluginPreWrapper: Plugin<[], Root> = () => {
   return tree => {
     visit(tree, 'element', node => {
-      // <pre><code>...</code></pre>
       // 1. 找到 pre 元素
       if (
         node.tagName === 'pre' &&
