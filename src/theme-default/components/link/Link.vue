@@ -8,7 +8,6 @@
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-console.log('router', router)
 export interface LinkProps {
   href?: string
   className?: string
